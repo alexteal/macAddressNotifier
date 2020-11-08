@@ -12,3 +12,5 @@ Root privilages are required. The script can either be run as root or the sudo p
 - This script heavily relies on the subprocess module, which is very slow.
 
 - The 'arp' command takes time to create an index of devices, so this also adds about 20 seconds to each loop
+
+- iOS 14 has partially broken this program. Tracked iPhone must disable "random hardware address".
