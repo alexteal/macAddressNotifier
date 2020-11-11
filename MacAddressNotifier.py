@@ -1,9 +1,6 @@
 import subprocess
 from twilio.rest import Client
 
-# I built this project in college, so that I could be informed when my room mate brought his girlfriend to our dorm.
-# Because for some reason, it's too difficult to put a sock on the door.
-# Anyway, here's my over-engineered solution
 
 # Twilio identifiers here:
 account_sid = 'AccountSID'
@@ -37,17 +34,16 @@ while True:
         message = client.messages.create(
             body='The specified device has connected to the server\'s local network.',
             #Phone number provided by Twilio goes here
-            from_='+14158684865',
+            from_='+twilio',
             #Destination number goes here
-            to='+16785339306'
+            to='+destination'
         )
         print (message.sid)
         print('device at location')
         deviceAtLocation = True
         while deviceAtLocation == True:
             subprocess.run(['arp -a'], shell=True)
-            # Not entirely sure how 'arp -a' works,
-            # but using a sleep function here help the 'arp -a' command get all the addresses on the network
+            # arp -a doesn't fully run without a sleep function
             time.sleep(20)
             print("device still at location")
             macAddresses = macAddressArray()
